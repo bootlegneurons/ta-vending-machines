@@ -8,9 +8,7 @@ const ITEM_KEY = 'product_code';
 
 const SelectedProducts = ({ items, onChange }) => (
   <>
-    <ColumnLabels
-      labels={[{ label: 'Selected Products', offset: 1, columns: 23 }]}
-    />
+    <ColumnLabels labels={[{ label: 'Selected Products', columns: 24 }]} />
     <ItemList
       itemComponent={ProductCard}
       items={items}

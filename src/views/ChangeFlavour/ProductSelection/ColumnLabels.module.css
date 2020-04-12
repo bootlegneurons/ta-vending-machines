@@ -3,6 +3,16 @@
   padding: 8px 0;
 }
 
+.wrapper:first-child {
+  margin-left: -16px;
+  padding-left: 16px;
+}
+
+.wrapper:last-child {
+  margin-right: -16px;
+  padding-right: 16px;
+}
+
 .label {
   font-weight: 600;
 }
