@@ -5,4 +5,5 @@
 
 .left-col {
   border-right: 1px solid #ccc;
+  z-index: 1;
 }
