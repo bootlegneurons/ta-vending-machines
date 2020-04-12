@@ -1,5 +1,8 @@
 import React from 'react';
+import { Layout } from 'antd';
 
-const ProductSelection = () => <div>Product Selection placeholder</div>;
+const ProductSelection = () => (
+  <Layout.Content>Product Selection placeholder</Layout.Content>
+);
 
 export default ProductSelection;

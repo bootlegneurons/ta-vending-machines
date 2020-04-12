@@ -1,5 +1,6 @@
 import React from 'react';
+import { Layout } from 'antd';
 
-const Footer = () => <div>Footer placeholder</div>;
+const Footer = () => <Layout.Footer>Footer placeholder</Layout.Footer>;
 
 export default Footer;

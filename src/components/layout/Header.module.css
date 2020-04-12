@@ -1,0 +1,7 @@
+.wrapper {
+  background: #fff !important;
+  height: auto !important;
+  flex: 0 1 auto !important;
+  width: 100%;
+  z-index: 1;
+}

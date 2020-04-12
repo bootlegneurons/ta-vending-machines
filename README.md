@@ -1,5 +1,6 @@
 # Vending Machine Technical Assessment
-*David Dembo - April 2020*
+
+_David Dembo - April 2020_
 
 ## Instructions
 
@@ -23,6 +24,7 @@ npm start
 - This list must contain all products but the one selected on the left
 - On each item click show revenue summary information based on `cannibalised` data inside product info.
 - Net Gain should expand into a list of all the cannibalised products.
+
 Please feel free to substituted missed data values with dummy numbers (i.e. Vends, Cols)
 
 ### Information
@@ -38,4 +40,3 @@ To fetch images use `https://cdn.vendinganalytics.com/reyes-ccb/tb/PRODUCT_CODE.
 `Net Gain = Selected Product Revenue - Current ProductRevenue - sum(Cannibalised products revenue)`
 
 All prices are given in cents.
-
