@@ -1,0 +1,10 @@
+.wrapper:global(.ant-layout-content) {
+  background: #fff;
+  flex: 1 1 auto;
+}
+
+.wrapper {
+  width: 100%;
+  z-index: 1;
+  position: relative;
+}

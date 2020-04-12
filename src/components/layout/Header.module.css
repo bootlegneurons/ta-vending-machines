@@ -1,7 +1,10 @@
+.wrapper:global(.ant-layout-header) {
+  background: #fff;
+  flex: 0 1 auto;
+  height: auto;
+}
+
 .wrapper {
-  background: #fff !important;
-  height: auto !important;
-  flex: 0 1 auto !important;
   width: 100%;
   z-index: 1;
 }

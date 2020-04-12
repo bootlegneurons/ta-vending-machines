@@ -1,0 +1,9 @@
+.wrapper:global(.ant-layout-footer) {
+  background: #fff;
+  flex: 0 0 auto;
+}
+
+.wrapper {
+  width: 100%;
+  z-index: 1;
+}

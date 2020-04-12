@@ -1,0 +1,7 @@
+.wrapper:global(.ant-layout) {
+  background: #fff;
+}
+
+.wrapper {
+  height: 100%;
+}

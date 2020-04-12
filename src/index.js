@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import ChangeFlavour from './views/ChangeFlavour/ChangeFlavour';
 import 'antd/dist/antd.css';
+import 'index.css';
 
 // TODO: implement routing & proper app layout once new app views become known
 ReactDOM.render(
