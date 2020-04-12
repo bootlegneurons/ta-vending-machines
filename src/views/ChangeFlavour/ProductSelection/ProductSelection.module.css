@@ -1,3 +1,7 @@
+.left-col:global(.ant-col) {
+  max-width: 33%;
+}
+
 .wrapper {
   align-items: stretch;
   height: 100%;

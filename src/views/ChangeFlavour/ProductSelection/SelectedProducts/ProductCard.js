@@ -22,11 +22,12 @@ const ProductCard = ({
       <h4>{id}</h4>
       <dl>
         <dt>Price:</dt>
-        <dd>${price / 100}</dd>
+        <dd>${(price / 100).toFixed(2)}</dd>
         <dt>Vends:</dt>
-        <dd>{vends}</dd>
+        <dd>{vends.toFixed(2)}</dd>
         <dt>Revenue:</dt>
-        <dd>${vends * price}</dd>
+        <dd>${(vends * price).toFixed(2)}</dd>
+        {/* TODO: add cols data */}
         <dt>Cols:</dt>
         <dd />
       </dl>

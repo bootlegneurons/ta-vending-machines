@@ -46,13 +46,13 @@ const ProductSelection = ({ onProductSelected, search, value }) => {
   // TODO: refactor to eliminate classNames. TwoColumnContentArea ? columns prop for Content?
   return (
     <Row className={styles.wrapper}>
-      <Col className={styles['left-col']} flex={1}>
+      <Col className={styles['left-col']} flex="0 1 auto">
         <SelectedProducts
           items={currentProducts}
           onChange={id => setCurrentProduct(id)}
         />
       </Col>
-      <Col flex={4}>
+      <Col flex="1 0 auto">
         <OtherProducts
           items={[]}
           onChange={onProductSelected}
