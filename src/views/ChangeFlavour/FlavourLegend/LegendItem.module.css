@@ -1,0 +1,26 @@
+.item {
+  padding-left: 24px;
+  position: relative;
+}
+
+.item::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: #ccc no-repeat;
+  margin-right: 8px;
+  position: absolute;
+  top: 0;
+  border-radius: 4px;
+}
+
+.item.is-green::before {
+  background-color: green;
+}
+.item.is-orange::before {
+  background-color: orange;
+}
+.item.is-red::before {
+  background-color: orangered;
+}
