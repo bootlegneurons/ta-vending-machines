@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ChangeFlavour from './views/ChangeFlavour/ChangeFlavour';
 
+// TODO: implement routing & proper app layout once new app views become known
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChangeFlavour />
   </React.StrictMode>,
   document.getElementById('root')
 );

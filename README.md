@@ -5,7 +5,7 @@
 
 ```
 npm i
-npm run start
+npm start
 ```
 
 ## Assessment Brief
