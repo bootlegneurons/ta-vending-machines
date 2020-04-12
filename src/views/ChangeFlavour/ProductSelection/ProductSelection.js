@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
-import SelectedProducts from './SelectedProducts';
+import SelectedProducts from './SelectedProducts/SelectedProducts';
 import OtherProducts from './OtherProducts';
+import styles from './ProductSelection.module.css';
 
 // TODO: replace hardcoded data with provided data source
 const currentProducts = [
@@ -41,13 +42,13 @@ const ProductSelection = ({ onProductSelected, search, value }) => {
   // TODO: debounce fn call ? prevent race conditions
   useEffect(() => {}, [currentProduct, search]);
 
+  // TODO: refactor to eliminate classNames. TwoColumnContentArea ? columns prop for Content?
   return (
-    <Row>
-      <Col flex={1}>
+    <Row className={styles.wrapper}>
+      <Col className={styles['left-col']} flex={1}>
         <SelectedProducts
           items={currentProducts}
           onChange={id => setCurrentProduct(id)}
-          value={currentProduct}
         />
       </Col>
       <Col flex={4}>
