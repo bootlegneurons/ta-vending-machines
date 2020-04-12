@@ -1,7 +1,15 @@
 # Vending Machine Technical Assessment
 *David Dembo - April 2020*
 
+## Instructions
+
+```
+npm i
+npm run start
+```
+
 ## Assessment Brief
+
 ### Data
 
 - A list of current products information
