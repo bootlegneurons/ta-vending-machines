@@ -6,6 +6,7 @@ import OtherProducts from './OtherProducts';
 import styles from './ProductSelection.module.css';
 
 // TODO: replace hardcoded data with provided data source
+// TODO: ensure not overfetching, transform props when fetching
 const currentProducts = [
   {
     display_category: 0,

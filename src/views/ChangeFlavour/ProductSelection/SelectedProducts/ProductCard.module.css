@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.thumbnail {
+  flex: 0 0 auto;
+  min-width: 45px;
+}
+
+.thumbnail img {
+  height: 85px;
+}
+
+.details {
+  flex: 1 0 auto;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.details > * {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.details > h4 {
+  font-weight: normal;
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 4px;
+}
+
+.details > dl * {
+  float: left;
+}
+
+.details > dl > dt {
+  width: 40%;
+  clear: left;
+}
+
+.is-selected {
+  background-color: #e6f7ff;
+}
