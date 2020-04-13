@@ -79,7 +79,6 @@ const ProductRow = ({
       <Col className={styles['is-aligned']} style={getFlexAttr(3)}>
         ${(vends * price).toFixed(2)}
       </Col>
-      {/* TODO: derive net gain from graphql resolver */}
       <Col className={styles['is-aligned']} style={getFlexAttr(2)}>
         {renderNetGain()}
       </Col>

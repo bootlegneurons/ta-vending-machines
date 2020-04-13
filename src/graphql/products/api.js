@@ -4,7 +4,7 @@ const {
   currentProducts: CURRENT,
 } = require('./data');
 
-const getProductCapacity = id => CAPACITIES[id] || false;
+const getProductCapacity = id => CAPACITIES[id] || 0;
 
 const getProductById = id => {
   const result = PRODUCTS.find(product => product.product_code === id);
@@ -27,7 +27,7 @@ const getCannibalisedRevenue = ({
 
 // Calculate Revenue, capacity and Net Gain & add to each product
 const formatProduct = (product, selectedId) => {
-  const capacity = getProductCapacity(product.product_code) || 0;
+  const capacity = getProductCapacity(product.product_code);
   const revenue = getRevenue(product);
   // TODO: add dummy 'cols' data to source data, for now append default
   const cols = 0;
@@ -41,9 +41,11 @@ const formatProduct = (product, selectedId) => {
   // Calculate net_gain and add to product, if a product is selected
   if (selectedId) {
     const selected = getProductById(selectedId);
-    const selectedRevenue = getRevenue(selected);
-    const cannibalisedRevenue = getCannibalisedRevenue(product.cannibalised);
-    newProduct.net_gain = selectedRevenue - revenue - cannibalisedRevenue;
+    if (selected) {
+      const selectedRevenue = getRevenue(selected);
+      const cannibalisedRevenue = getCannibalisedRevenue(product.cannibalised);
+      newProduct.net_gain = selectedRevenue - revenue - cannibalisedRevenue;
+    }
   }
 
   return newProduct;
@@ -68,7 +70,10 @@ const getProducts = ({
   }
 
   if (search) {
-    const filterBySearch = product => product.product_name.includes(search);
+    const filterBySearch = product => {
+      const productName = product.product_name.toLowerCase();
+      return productName.includes(search.toLowerCase());
+    };
 
     formattedProducts = formattedProducts.filter(filterBySearch);
   }
