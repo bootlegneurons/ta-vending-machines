@@ -1,3 +1,7 @@
+.wrapper:global(.ant-row) {
+  flex-flow: row nowrap;
+}
+
 .wrapper {
   background-color: #e4e6ea;
   padding: 8px 0;

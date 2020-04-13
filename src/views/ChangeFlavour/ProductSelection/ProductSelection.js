@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import SelectedProducts from './SelectedProducts/SelectedProducts';
 import OtherProducts from './OtherProducts';
 import styles from './ProductSelection.module.css';
+import MOCK_ITEMS from './mockData';
 
 // TODO: replace hardcoded data with provided data source
 // TODO: ensure not overfetching, transform props when fetching
@@ -36,7 +37,7 @@ const currentProducts = [
   },
 ];
 
-const ProductSelection = ({ onProductSelected, search, value }) => {
+const ProductSelection = ({ onProductSelected, search, value: newProduct }) => {
   const [currentProduct, setCurrentProduct] = useState('');
 
   // TODO: on currentProduct or search change, refetch other products
@@ -50,14 +51,15 @@ const ProductSelection = ({ onProductSelected, search, value }) => {
         <SelectedProducts
           items={currentProducts}
           onChange={id => setCurrentProduct(id)}
+          value={currentProduct}
         />
       </Col>
       <Col flex="1 0 auto">
         <OtherProducts
-          items={[]}
+          // TODO: remove mock below
+          items={MOCK_ITEMS}
           onChange={onProductSelected}
-          selectedId={null}
-          value={value}
+          value={newProduct}
         />
       </Col>
     </Row>

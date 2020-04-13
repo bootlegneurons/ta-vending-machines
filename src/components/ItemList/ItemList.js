@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ItemList.module.css';
 
 /**
- * ItemList is a generic semantic list component. `itemComponent` will receive
- * the following props:
+ * ItemList is a generic semantic list component. Value is controlled
+ * to prevent state drift. `itemComponent` will receive the following props:
  *   destructured current list item as component props,
  *   `id`: value of item's key property (`itemId`)
  *   `isSelected`: true or false, ItemList tracks internally
@@ -14,21 +14,20 @@ const ItemList = ({
   itemId,
   items,
   onSelect,
+  value,
 }) => {
-  const [selectedId, setSelectedId] = useState('');
   const handleSelect = id => {
-    if (id === selectedId) {
+    if (id === value) {
       return;
     }
 
-    setSelectedId(id);
     onSelect(id);
   };
 
   const renderItem = item => {
     const itemProps = {
       id: item[itemId],
-      isSelected: selectedId === item[itemId],
+      isSelected: value === item[itemId],
       ...item,
     };
 
@@ -57,6 +56,7 @@ ItemList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   items: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default ItemList;
