@@ -4,8 +4,16 @@ _David Dembo - April 2020_
 
 ## Instructions
 
+In a terminal window, execute the following:
+
 ```
 npm i
+npm run start:server
+```
+
+After Graphql server has started, run:
+
+```
 npm start
 ```
 

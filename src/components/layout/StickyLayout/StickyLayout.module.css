@@ -1,5 +1,7 @@
+@import '~/common.css';
+
 .wrapper:global(.ant-layout) {
-  background: #fff;
+  background: var(--color-background);
 }
 
 .wrapper {

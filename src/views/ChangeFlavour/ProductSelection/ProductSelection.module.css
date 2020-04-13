@@ -1,3 +1,5 @@
+@import '~/common.css';
+
 .left-col:global(.ant-col) {
   max-width: 33%;
 }
@@ -8,6 +10,5 @@
 }
 
 .left-col {
-  border-right: 1px solid #ccc;
-  z-index: 1;
+  border-right: 1px solid var(--color-borders);
 }

@@ -1,10 +1,13 @@
+@import '~/common.css';
+
 .wrapper:global(.ant-layout-header) {
-  background: #fff;
+  background: var(--color-background);
   flex: 0 1 auto;
   height: auto;
+  z-index: 1;
 }
 
 .wrapper {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--color-borders);
   width: 100%;
 }

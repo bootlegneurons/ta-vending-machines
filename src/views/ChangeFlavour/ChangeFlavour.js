@@ -44,7 +44,7 @@ const ChangeFlavour = () => {
             <Button size="large">Cancel</Button>
           </Col>
           <Col>
-            <Button disabled={!!newProductId} size="large" type="primary">
+            <Button disabled={!newProductId} size="large" type="primary">
               Save
             </Button>
           </Col>

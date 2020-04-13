@@ -1,67 +1,93 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
+import { useQuery, useLazyQuery } from '@apollo/react-hooks';
+import {
+  SELECTED_PRODUCTS_QUERY,
+  OTHER_PRODUCTS_QUERY,
+} from 'graphql/products/queries';
 import SelectedProducts from './SelectedProducts/SelectedProducts';
 import OtherProducts from './OtherProducts';
 import styles from './ProductSelection.module.css';
-import MOCK_ITEMS from './mockData';
-
-// TODO: replace hardcoded data with provided data source
-// TODO: ensure not overfetching, transform props when fetching
-const currentProducts = [
-  {
-    display_category: 0,
-    product_code: '133129',
-    product_name: '16Z CN 24LS_MON NRG',
-    type_name: 'BEVERAGE',
-    average_sales: 1.24275,
-    price: 275,
-    subsidy_price: 0,
-    expected_price: 275,
-    revenue_bar_width: 28.2876883513,
-    is_known: true,
-    is_predicted: false,
-  },
-  {
-    display_category: 0,
-    product_code: '114756',
-    product_name: '20Z PT 24LS_FANTA ORG',
-    type_name: 'BEVERAGE',
-    average_sales: 2.05903,
-    price: 175,
-    subsidy_price: 0,
-    expected_price: 175,
-    revenue_bar_width: 28.1207961115,
-    is_known: true,
-    is_predicted: false,
-  },
-];
 
 const ProductSelection = ({ onProductSelected, search, value: newProduct }) => {
   const [currentProduct, setCurrentProduct] = useState('');
+  const {
+    loading: selectedProductsLoading,
+    error: selectedProductsError,
+    data: selectedProductsData,
+  } = useQuery(SELECTED_PRODUCTS_QUERY);
+  const [
+    getOtherProducts,
+    {
+      loading: otherProductsLoading,
+      error: otherProductsError,
+      data: otherProductsData,
+    },
+  ] = useLazyQuery(OTHER_PRODUCTS_QUERY);
 
-  // TODO: on currentProduct or search change, refetch other products
-  // TODO: debounce fn call ? prevent race conditions
-  useEffect(() => {}, [currentProduct, search]);
+  // on currentProduct or search change, refetch other products
+  useEffect(() => {
+    if (!currentProduct) {
+      return;
+    }
+
+    const fetchProducts = async () => {
+      await getOtherProducts({
+        variables: {
+          search,
+          excludeId: currentProduct,
+        },
+      });
+    };
+
+    fetchProducts();
+  }, [getOtherProducts, currentProduct, search]);
+
+  // TODO: implement proper loading state/error handling
+  const renderSelectedProducts = () => {
+    if (selectedProductsLoading || selectedProductsError) {
+      return <p>Loading... {selectedProductsError ? 'Error' : null}</p>;
+    }
+
+    return (
+      selectedProductsData && (
+        <SelectedProducts
+          items={selectedProductsData.selectedProducts}
+          onChange={id => setCurrentProduct(id)}
+          value={currentProduct}
+        />
+      )
+    );
+  };
+
+  const renderOtherProducts = () => {
+    if (!currentProduct) {
+      return <p>Please select a product from the list to the left</p>;
+    }
+
+    if (otherProductsLoading || otherProductsError) {
+      return <p>Loading... {otherProductsError ? 'Error' : null}</p>;
+    }
+
+    return (
+      otherProductsData && (
+        <OtherProducts
+          items={otherProductsData.otherProducts}
+          onChange={onProductSelected}
+          value={newProduct}
+        />
+      )
+    );
+  };
 
   // TODO: refactor to eliminate classNames. TwoColumnContentArea ? columns prop for Content?
   return (
     <Row className={styles.wrapper}>
       <Col className={styles['left-col']} flex="0 1 auto">
-        <SelectedProducts
-          items={currentProducts}
-          onChange={id => setCurrentProduct(id)}
-          value={currentProduct}
-        />
+        {renderSelectedProducts()}
       </Col>
-      <Col flex="1 0 auto">
-        <OtherProducts
-          // TODO: remove mock below
-          items={MOCK_ITEMS}
-          onChange={onProductSelected}
-          value={newProduct}
-        />
-      </Col>
+      <Col flex="1 0 auto">{renderOtherProducts()}</Col>
     </Row>
   );
 };

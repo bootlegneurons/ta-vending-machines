@@ -1,20 +1,12 @@
+@import '~/common.css';
+
 .wrapper:global(.ant-row) {
   flex-flow: row nowrap;
 }
 
 .wrapper {
-  background-color: #e4e6ea;
+  background-color: var(--color-column-headings);
   padding: 8px 0;
-}
-
-.wrapper:first-child {
-  margin-left: -16px;
-  padding-left: 16px;
-}
-
-.wrapper:last-child {
-  margin-right: -16px;
-  padding-right: 16px;
 }
 
 .label {

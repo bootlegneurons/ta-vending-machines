@@ -1,3 +1,5 @@
+@import '~common.css';
+
 .item {
   padding-left: 24px;
   position: relative;
@@ -8,7 +10,7 @@
   display: block;
   width: 18px;
   height: 18px;
-  background: #ccc no-repeat;
+  background: var(--color-background) no-repeat;
   margin-right: 8px;
   position: absolute;
   top: 0;
@@ -16,11 +18,11 @@
 }
 
 .item.is-green::before {
-  background-color: green;
+  background-color: var(--color-green);
 }
 .item.is-orange::before {
-  background-color: orange;
+  background-color: var(--color-orange);
 }
 .item.is-red::before {
-  background-color: orangered;
+  background-color: var(--color-red);
 }

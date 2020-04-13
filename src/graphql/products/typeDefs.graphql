@@ -1,0 +1,35 @@
+type Product {
+  display_category: Int
+  product_code: String!
+  product_name: String
+  type_name: String
+  average_sales: Float
+  price: Int
+  subsidy_price: Int
+  expected_price: Int
+  revenue_bar_width: Float
+  is_known: Boolean
+  is_predicted: Boolean
+  cannibalised: Cannibalised
+  net_gain: Float
+  capacity: Int
+  revenue: Float
+  cols: Int
+}
+
+type Cannibalised {
+  addedProductRevenue: Float
+  replacedProductRevenue: Float
+  products: [CannibalisedProduct]
+}
+
+type CannibalisedProduct {
+  code: String!
+  name: String
+  revenue: Float
+}
+
+type Query {
+  selectedProducts: [Product]
+  otherProducts(excludeId: String!, search: String): [Product]
+}

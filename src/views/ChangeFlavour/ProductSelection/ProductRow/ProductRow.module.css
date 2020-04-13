@@ -1,12 +1,14 @@
+@import '~common.css';
+
 .wrapper:global(.ant-row) {
   flex-flow: row nowrap;
 }
 
 .wrapper {
-  background-color: #fff;
+  background-color: var(--color-background);
   align-items: stretch;
   min-height: 48px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-borders);
 }
 
 .wrapper > *:not(.category) {
@@ -25,11 +27,12 @@
 
 .product .thumbnail {
   flex: 0 0 auto;
-  min-width: 20px;
+  width: 24px;
 }
 
 .product .thumbnail img {
   height: 42px;
+  max-width: 24px;
 }
 
 .product .details {
@@ -44,24 +47,33 @@
 
 .product .details > h4 {
   font-weight: normal;
-  color: #ccc;
+  color: var(--color-grey);
   margin: 0;
 }
 
 .category > .is-recommended {
-  background-color: green;
+  background-color: var(--color-green);
 }
 
 .category > .is-other {
-  background-color: orange;
+  background-color: var(--color-orange);
 }
 
 .category > .is-caution {
-  background-color: orangered;
+  background-color: var(--color-red);
+}
+
+.net-gain {
+  font-weight: 600;
+  color: var(--color-red);
+}
+
+.net-gain.is-positive {
+  color: var(--color-green);
 }
 
 .is-selected {
-  background-color: #e6f7ff;
+  background-color: var(--color-selected);
 }
 
 .is-aligned {

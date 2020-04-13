@@ -33,7 +33,7 @@ const ItemList = ({
 
     return (
       <li
-        classes={styles.item}
+        className={styles.item}
         key={item[itemId]}
         onClick={() => handleSelect(item[itemId])}
       >

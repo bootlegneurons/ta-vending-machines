@@ -1,6 +1,9 @@
+@import '~/common.css';
+
 .wrapper:global(.ant-layout-content) {
-  background: #fff;
+  background: var(--color-background);
   flex: 1 1 auto;
+  overflow: auto;
 }
 
 .wrapper {

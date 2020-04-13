@@ -1,9 +1,12 @@
+@import '~common.css';
+
 .wrapper:global(.ant-layout-footer) {
-  background: #fff;
+  background: var(--color-background);
   flex: 0 0 auto;
+  z-index: 1;
 }
 
 .wrapper {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--color-borders);
   width: 100%;
 }
