@@ -1,7 +1,7 @@
 import React from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ChangeFlavour from './ChangeFlavour/ChangeFlavour';
+import ChangeFlavour from 'client/views/ChangeFlavour/ChangeFlavour';
 
 const GRAPHQL_ENDPOINT = 'http://localhost:4000/graphql';
 const client = new ApolloClient({

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import cx from 'classnames';
-import { ProductCategoryLabels } from 'views/ChangeFlavour/constants';
+import { ProductCategoryLabels } from 'client/views/ChangeFlavour/constants';
 import styles from './ProductRow.module.css';
 
 // TODO: refactor to extract common util (used by ColumnLabels)

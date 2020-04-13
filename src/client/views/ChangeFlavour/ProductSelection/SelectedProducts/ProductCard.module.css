@@ -1,4 +1,4 @@
-@import '~/common.css';
+@import '~client/common.css';
 
 .wrapper {
   display: flex;

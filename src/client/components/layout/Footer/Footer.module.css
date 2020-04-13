@@ -1,4 +1,4 @@
-@import '~common.css';
+@import '~client/common.css';
 
 .wrapper:global(.ant-layout-footer) {
   background: var(--color-background);

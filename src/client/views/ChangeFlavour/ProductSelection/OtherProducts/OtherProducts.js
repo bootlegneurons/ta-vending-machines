@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ItemList from 'components/ItemList/ItemList';
-import { PRODUCT_KEY } from '../constants';
-import ColumnLabels from './ColumnLabels';
+import { ItemList, ColumnLabels } from 'client/components';
+import { PRODUCT_KEY } from 'client/views/ChangeFlavour/constants';
 import ProductRow from './ProductRow/ProductRow';
 
 const OtherProducts = ({ items, onChange, value: newProduct }) => (

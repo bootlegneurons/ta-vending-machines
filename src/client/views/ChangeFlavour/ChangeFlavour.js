@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Row, Col, Input, Tooltip, Button } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import { StickyLayout, Header, Footer, Content } from 'components/layout';
+import {
+  StickyLayout,
+  Header,
+  Footer,
+  Content,
+} from 'client/components/layout';
 import ProductSelection from './ProductSelection/ProductSelection';
 import FlavourLegend from './FlavourLegend/FlavourLegend';
 

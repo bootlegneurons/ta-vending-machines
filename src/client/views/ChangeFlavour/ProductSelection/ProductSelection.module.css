@@ -1,4 +1,4 @@
-@import '~/common.css';
+@import '~client/common.css';
 
 .left-col:global(.ant-col) {
   max-width: 33%;

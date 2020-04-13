@@ -7,7 +7,7 @@ import {
   OTHER_PRODUCTS_QUERY,
 } from 'graphql/products/queries';
 import SelectedProducts from './SelectedProducts/SelectedProducts';
-import OtherProducts from './OtherProducts';
+import OtherProducts from './OtherProducts/OtherProducts';
 import styles from './ProductSelection.module.css';
 
 const ProductSelection = ({ onProductSelected, search, value: newProduct }) => {

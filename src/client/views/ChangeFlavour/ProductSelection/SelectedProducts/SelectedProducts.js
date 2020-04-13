@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ItemList from 'components/ItemList/ItemList';
-import { PRODUCT_KEY } from 'views/ChangeFlavour/constants';
+import { ColumnLabels, ItemList } from 'client/components';
+import { PRODUCT_KEY } from 'client/views/ChangeFlavour/constants';
 import ProductCard from './ProductCard';
-import ColumnLabels from '../ColumnLabels';
 
 const SelectedProducts = ({ items, onChange, value: currentProduct }) => (
   <>
