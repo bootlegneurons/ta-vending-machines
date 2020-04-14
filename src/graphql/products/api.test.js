@@ -17,7 +17,7 @@ const getFormattedMockProduct = id => {
   return {
     ...mockProduct,
     capacity: MOCK_DATA.productCapacity[id] || 0,
-    revenue: mockProduct.average_sales * mockProduct.price,
+    revenue: (mockProduct.average_sales * mockProduct.price) / 100,
     cols: 0,
   };
 };
