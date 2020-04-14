@@ -1,3 +1,4 @@
+const memoize = require('fast-memoize');
 const {
   productUpdateData: PRODUCTS,
   productCapacity: CAPACITIES,
@@ -6,10 +7,10 @@ const {
 
 const getProductCapacity = id => CAPACITIES[id] || 0;
 
-const getProductById = id => {
+const getProductById = memoize(id => {
   const result = PRODUCTS.find(product => product.product_code === id);
   return result || false;
-};
+});
 
 const getRevenue = ({ average_sales: averageSales = 0, price = 0 }) =>
   (averageSales * price) / 100;
@@ -54,40 +55,44 @@ const formatProduct = (product, selectedId) => {
 const formatProducts = (products, selectedId) =>
   products.map(product => formatProduct(product, selectedId));
 
-const getProducts = ({
-  selectedId,
-  requestedIds = [],
-  excludeSelected = false,
-  search = '',
-} = {}) => {
-  let formattedProducts = formatProducts(PRODUCTS, selectedId);
+const getProducts = memoize(
+  ({
+    selectedId,
+    requestedIds = [],
+    excludeSelected = false,
+    search = '',
+  } = {}) => {
+    let formattedProducts = formatProducts(PRODUCTS, selectedId);
 
-  if (Array.isArray(requestedIds) && requestedIds.length > 0) {
-    const filterByRequested = product =>
-      requestedIds.includes(product.product_code);
+    if (Array.isArray(requestedIds) && requestedIds.length > 0) {
+      const filterByRequested = product =>
+        requestedIds.includes(product.product_code);
 
-    formattedProducts = formattedProducts.filter(filterByRequested);
+      formattedProducts = formattedProducts.filter(filterByRequested);
+    }
+
+    if (search) {
+      const filterBySearch = product => {
+        const productName = product.product_name.toLowerCase();
+        return productName.includes(search.toLowerCase());
+      };
+
+      formattedProducts = formattedProducts.filter(filterBySearch);
+    }
+
+    if (selectedId && excludeSelected) {
+      const filterBySelected = product => product.product_code !== selectedId;
+
+      formattedProducts = formattedProducts.filter(filterBySelected);
+    }
+
+    return formattedProducts;
   }
+);
 
-  if (search) {
-    const filterBySearch = product => {
-      const productName = product.product_name.toLowerCase();
-      return productName.includes(search.toLowerCase());
-    };
-
-    formattedProducts = formattedProducts.filter(filterBySearch);
-  }
-
-  if (selectedId && excludeSelected) {
-    const filterBySelected = product => product.product_code !== selectedId;
-
-    formattedProducts = formattedProducts.filter(filterBySelected);
-  }
-
-  return formattedProducts;
-};
-
-const getCurrentProducts = () => getProducts({ requestedIds: CURRENT });
+const getCurrentProducts = memoize(() =>
+  getProducts({ requestedIds: CURRENT })
+);
 
 const productsApi = {
   getCurrentProducts,
