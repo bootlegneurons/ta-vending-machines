@@ -23,6 +23,15 @@ const OTHER_PRODUCTS_QUERY = gql`
       price
       average_sales
       display_category
+      cannibalised {
+        addedProductRevenue
+        replacedProductRevenue
+        products {
+          code
+          name
+          revenue
+        }
+      }
       capacity
       revenue
       net_gain

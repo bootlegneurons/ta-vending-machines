@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
+import { getFlexAttr } from 'client/utils';
 import styles from './ColumnLabels.module.css';
-
-const getFlexAttr = columns => ({
-  flex: `0 1 ${(100.0 * (columns / 24)).toFixed(3)}%`,
-});
 
 /** Creates a row of text labels aligned to a 24 col grid */
 const ColumnLabels = ({ labels = [] }) => (

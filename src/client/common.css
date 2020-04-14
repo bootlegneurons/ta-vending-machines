@@ -1,9 +1,15 @@
 :root {
+  /* Status/Highlights */
   --color-green: #82cc1f;
   --color-orange: #ffb107;
   --color-red: #f65d3e;
   --color-selected: #e6f7ff;
-  --color-column-headings: #ddd;
-  --color-borders: #ddd;
+  /* Typography */
+  --color-text: #333;
+  --color-text-lighter: #999;
+  /* Layout elements */
   --color-background: #fff;
+  --color-borders: #ddd;
+  --color-column-headings: #e4e6ea;
+  --color-icon: #1890ff;
 }

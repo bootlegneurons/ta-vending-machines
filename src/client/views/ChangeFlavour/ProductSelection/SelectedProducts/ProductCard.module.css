@@ -31,7 +31,7 @@
 .details > h4 {
   font-weight: normal;
   font-style: italic;
-  color: var(--color-grey);
+  color: var(--color-text-lighter);
   margin-bottom: 4px;
 }
 

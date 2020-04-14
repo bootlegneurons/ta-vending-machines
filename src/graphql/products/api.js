@@ -12,7 +12,7 @@ const getProductById = id => {
 };
 
 const getRevenue = ({ average_sales: averageSales = 0, price = 0 }) =>
-  averageSales * price;
+  (averageSales * price) / 100;
 
 const getCannibalisedRevenue = ({
   addedProductRevenue = 0,

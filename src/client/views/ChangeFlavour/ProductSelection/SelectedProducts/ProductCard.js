@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { formatCurrency } from 'client/utils';
 import styles from './ProductCard.module.css';
 
 const ProductCard = ({
   id,
   isSelected,
+  cols,
   average_sales: vends,
   product_name: name,
   price,
+  revenue,
 }) => (
   <div className={cx(styles.wrapper, { [styles['is-selected']]: isSelected })}>
     <div className={styles.thumbnail}>
@@ -22,14 +25,13 @@ const ProductCard = ({
       <h4>{id}</h4>
       <dl>
         <dt>Price:</dt>
-        <dd>${(price / 100).toFixed(2)}</dd>
+        <dd>{formatCurrency(price / 100)}</dd>
         <dt>Vends:</dt>
         <dd>{vends.toFixed(2)}</dd>
         <dt>Revenue:</dt>
-        <dd>${(vends * price).toFixed(2)}</dd>
-        {/* TODO: add cols data */}
+        <dd>{formatCurrency(revenue, true)}</dd>
         <dt>Cols:</dt>
-        <dd />
+        <dd>{cols}/10</dd>
       </dl>
     </div>
   </div>
@@ -37,10 +39,12 @@ const ProductCard = ({
 
 ProductCard.propTypes = {
   average_sales: PropTypes.number.isRequired,
+  cols: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   isSelected: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   product_name: PropTypes.string.isRequired,
+  revenue: PropTypes.number.isRequired,
 };
 
 export default ProductCard;

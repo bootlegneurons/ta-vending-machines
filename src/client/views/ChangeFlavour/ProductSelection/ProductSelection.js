@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'antd';
+import { Row, Col, Result, Spin } from 'antd';
 import { useQuery, useLazyQuery } from '@apollo/react-hooks';
 import {
   SELECTED_PRODUCTS_QUERY,
@@ -44,40 +44,59 @@ const ProductSelection = ({ onProductSelected, search, value: newProduct }) => {
     fetchProducts();
   }, [getOtherProducts, currentProduct, search]);
 
-  // TODO: implement proper loading state/error handling
   const renderSelectedProducts = () => {
-    if (selectedProductsLoading || selectedProductsError) {
-      return <p>Loading... {selectedProductsError ? 'Error' : null}</p>;
+    if (selectedProductsError) {
+      return (
+        <Result
+          status="error"
+          title="Error fetching products"
+          subTitle="Please refresh to try again"
+        />
+      );
     }
 
+    const items = selectedProductsData && selectedProductsData.selectedProducts;
     return (
-      selectedProductsData && (
+      <Spin spinning={selectedProductsLoading || !selectedProductsData}>
         <SelectedProducts
-          items={selectedProductsData.selectedProducts}
+          items={items || []}
           onChange={id => setCurrentProduct(id)}
           value={currentProduct}
         />
-      )
+      </Spin>
     );
   };
 
   const renderOtherProducts = () => {
     if (!currentProduct) {
-      return <p>Please select a product from the list to the left</p>;
+      return (
+        <Result
+          status="info"
+          title="No product selected"
+          subTitle="Please select a product from the list to the left"
+        />
+      );
     }
 
-    if (otherProductsLoading || otherProductsError) {
-      return <p>Loading... {otherProductsError ? 'Error' : null}</p>;
+    if (otherProductsError) {
+      return (
+        <Result
+          status="error"
+          title="Error fetching products"
+          subTitle="Please refresh to try again"
+        />
+      );
     }
 
+    const items = otherProductsData && otherProductsData.otherProducts;
     return (
-      otherProductsData && (
+      <Spin spinning={otherProductsLoading || !otherProductsData}>
         <OtherProducts
-          items={otherProductsData.otherProducts}
+          items={items || []}
           onChange={onProductSelected}
           value={newProduct}
         />
-      )
+      </Spin>
     );
   };
 
