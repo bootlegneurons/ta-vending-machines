@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import { HorizontalBar } from 'react-chartjs-2';
+import { cannibalisedPropType } from 'client/views/ChangeFlavour/constants';
 import styles from './RevenueChart.module.css';
 
 const ChartColor = {
@@ -107,17 +108,7 @@ const RevenueChart = ({ data, netGain }) => {
 };
 
 RevenueChart.propTypes = {
-  data: PropTypes.shape({
-    addedProductRevenue: PropTypes.number.isRequired,
-    replacedProductRevenue: PropTypes.number.isRequired,
-    products: PropTypes.arrayOf(
-      PropTypes.shape({
-        code: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        revenue: PropTypes.number.isRequired,
-      })
-    ).isRequired,
-  }),
+  data: cannibalisedPropType,
   netGain: PropTypes.number.isRequired,
 };
 

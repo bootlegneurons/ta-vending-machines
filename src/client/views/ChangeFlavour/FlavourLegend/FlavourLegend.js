@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row } from 'antd';
+import memoize from 'fast-memoize';
 import LegendItem from './LegendItem';
 
 const FlavourLegend = () => (
@@ -10,4 +11,4 @@ const FlavourLegend = () => (
   </Row>
 );
 
-export default FlavourLegend;
+export default memoize(FlavourLegend);
